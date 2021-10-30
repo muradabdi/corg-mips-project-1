@@ -15,3 +15,10 @@
 		la $a0, userInput			# Get text from input
 		li $a1, 12					# Load 12 into $a1
 		syscall 					
+
+		la $a0, userInput			# Load userInput address into $a0
+		li $s1, 0					# Load 0 into $s1
+
+	loop_string:					# Examine validity of each character
+	wrong:                          # Branched to if character does not meet alphanumeric criteria
+	calculate:						# Branched to if character does meet criteria / N = 26 + (12995113 % 11) = 36, z = 35
