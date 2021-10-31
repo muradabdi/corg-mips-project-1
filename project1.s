@@ -41,13 +41,13 @@
 		beq $t1, 0x5A, Z_N			# Branch to Z_N if $t1 equals uppercase Z
     	bge $t1, 0x61, a_z			# Branch to a_z if $t1 is greater than or equal to lowercase a
 		bge $t1, 0x41, A_Z			# Branch to A_Z if $t1 is greater than or equal to uppercase A
-
+        addi $s2, $t1, -48			# Load sum of $t1 and -48 into $s2
     z_N:
-
+        li $s2, 35					# Load 35 into $s2
     Z_N:
-
+        li $s2, 35					# Load 35 into $s2
     a_z:
-
+        addi $s2, $t1, -87			# Load sum of $t1 and -87 into $s2
     A_Z:
-
+        addi $s2, $t1, -55			# Load sum of $t1 and -55 into $s2
     done:
