@@ -37,5 +37,11 @@
     	b done						# Unconditionally branch to done
 
 	calculate:						# Branched to if character does meet criteria / N = 26 + (12995113 % 11) = 36, z = 35
+		beq $t1, 0x7A, z_N			# Branch to z_N if $t1 equals lowercase z
+		beq $t1, 0x5A, Z_N			# Branch to Z_N if $t1 equals uppercase Z
+
+    z_N:
+
+    Z_N:
 
     done:
