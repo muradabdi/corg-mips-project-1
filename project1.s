@@ -27,10 +27,15 @@
 		bgt $t1, 0x5A, wrong		# Wrong if greater than Z
         bge $t1, 0x41, calculate	# Calculate if A:Z
 		bgt $t1, 0x39, wrong		# Wrong if greater than 9
+        bge $t1, 0x30, calculate	# Calculate if 0:9		
+		b calculate					# Unconditionally branch to calculate
 
 	wrong:                          # Branched to if character does not meet alphanumeric criteria
     	addi $s1, $s1, 1			# Add 1 to $s1
 		addi $a0, $a0, 1			# Add 1 to $a0
 		blt $s1, 10, loop_string	# Only branch back to loop_string if $s1 is still less than 10
+    	b done						# Unconditionally branch to done
 
 	calculate:						# Branched to if character does meet criteria / N = 26 + (12995113 % 11) = 36, z = 35
+
+    done:
