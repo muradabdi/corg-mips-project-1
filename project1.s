@@ -20,5 +20,12 @@
 		li $s1, 0					# Load 0 into $s1
 
 	loop_string:					# Examine validity of each character
+		lb $t1, 0($a0)				# Load byte at userInput address into $t1
+		bltu $t1, 0x30, wrong		# Wrong if less than 0
+		bgt $t1, 0x7A, wrong		# Wrong if greater than z
+		bge $t1, 0x61, calculate	# Calculate if a:z
+		bgt $t1, 0x5A, wrong		# Wrong if greater than Z
+
 	wrong:                          # Branched to if character does not meet alphanumeric criteria
+
 	calculate:						# Branched to if character does meet criteria / N = 26 + (12995113 % 11) = 36, z = 35
