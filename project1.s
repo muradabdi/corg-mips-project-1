@@ -55,11 +55,14 @@
     A_Z:
         addi $s2, $t1, -55			# Load sum of $t1 and -55 into $s2
         b cal
-
     cal:	
 		add $s0, $s2, $s0			# Add $s2 to $s0
 		addi $s1, $s1, 1			# Add 1 to $s1
 		addi $a0, $a0, 1			# Add 1 to $a0
 		blt $s1, 10, loop_string	# Only branch back to loop_string if $s1 is still less than 10
+        b done
 
     done:
+        li $v0, 4					# 4 = code to print string
+        la $a0, message_out			# Load address of output message to print
+        syscall
