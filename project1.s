@@ -66,3 +66,7 @@
         li $v0, 4					# 4 = code to print string
         la $a0, message_out			# Load address of output message to print
         syscall
+
+		li $v0, 1					# 1 = code to print integer
+		move $a0, $s0 				# Move contents of $s0 to $a0
+		syscall
